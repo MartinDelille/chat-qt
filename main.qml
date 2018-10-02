@@ -1,4 +1,6 @@
 import QtQuick 2.11
+import QtQuick.Layouts 1.3
+import QtQuick.Controls 1.4 as C1
 import QtQuick.Controls 2.4
 
 ApplicationWindow {
@@ -6,60 +8,34 @@ ApplicationWindow {
     visible: true
     width: 640
     height: 480
-    title: qsTr("Stack")
+    title: qsTr("Signal")
 
-    header: ToolBar {
-        contentHeight: toolButton.implicitHeight
-
-        ToolButton {
-            id: toolButton
-            text: stackView.depth > 1 ? "\u25C0" : "\u2630"
-            font.pixelSize: Qt.application.font.pixelSize * 1.6
-            onClicked: {
-                if (stackView.depth > 1) {
-                    stackView.pop()
-                } else {
-                    drawer.open()
-                }
-            }
-        }
-
-        Label {
-            text: stackView.currentItem.title
-            anchors.centerIn: parent
-        }
-    }
-
-    Drawer {
-        id: drawer
-        width: window.width * 0.66
-        height: window.height
-
-        Column {
-            anchors.fill: parent
-
-            ItemDelegate {
-                text: qsTr("Page 1")
-                width: parent.width
-                onClicked: {
-                    stackView.push("Page1Form.ui.qml")
-                    drawer.close()
-                }
-            }
-            ItemDelegate {
-                text: qsTr("Page 2")
-                width: parent.width
-                onClicked: {
-                    stackView.push("Page2Form.ui.qml")
-                    drawer.close()
-                }
-            }
-        }
-    }
-
-    StackView {
-        id: stackView
-        initialItem: "HomeForm.ui.qml"
+    C1.SplitView {
         anchors.fill: parent
+
+        ListView {
+            id: conversationListView
+            width: parent.width * 0.33
+            height: parent.height
+            model: ["Albert Einstein", "Ernest Hemingway", "Hans Gude"]
+            delegate: ItemDelegate {
+                text: modelData
+                width: parent.width
+                height: avatar.implicitHeight
+                leftPadding: avatar.implicitWidth + 32
+                onClicked: messageView.push("qrc:/" + modelData.replace(" ", "_") + ".qml")
+                Image {
+                    id: avatar
+                    source: "qrc:images/" + modelData.replace(" ", "_") + ".png"
+                }
+            }
+        }
+
+        StackView {
+            id: messageView
+            initialItem: "Albert_Einstein.qml"
+            width: parent.width * 0.67
+            height: parent.height
+        }
     }
 }
