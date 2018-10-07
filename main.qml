@@ -33,6 +33,7 @@ ApplicationWindow {
 
         ConversationView {
             id: messageView
+            inConversationWith: "Albert Einstein"
             width: parent.width * 0.67
             height: parent.height
         }
