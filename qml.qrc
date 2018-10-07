@@ -2,9 +2,6 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>HomeForm.ui.qml</file>
-        <file>Albert_Einstein.qml</file>
-        <file>Ernest_Hemingway.qml</file>
-        <file>Hans_Gude.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>images/Albert_Einstein.png</file>
         <file>images/Albert_Einstein@2x.png</file>
@@ -18,5 +15,6 @@
         <file>images/Hans_Gude@2x.png</file>
         <file>images/Hans_Gude@3x.png</file>
         <file>images/Hans_Gude@4x.png</file>
+        <file>ConversationView.qml</file>
     </qresource>
 </RCC>

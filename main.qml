@@ -23,7 +23,7 @@ ApplicationWindow {
                 width: parent.width
                 height: avatar.implicitHeight
                 leftPadding: avatar.implicitWidth + 32
-                onClicked: messageView.push("qrc:/" + modelData.replace(" ", "_") + ".qml")
+                onClicked: messageView.inConversationWith = modelData
                 Image {
                     id: avatar
                     source: "qrc:images/" + modelData.replace(" ", "_") + ".png"
@@ -31,9 +31,8 @@ ApplicationWindow {
             }
         }
 
-        StackView {
+        ConversationView {
             id: messageView
-            initialItem: "Albert_Einstein.qml"
             width: parent.width * 0.67
             height: parent.height
         }
