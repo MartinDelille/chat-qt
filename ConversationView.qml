@@ -2,6 +2,8 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.1
 
+import org.signal 1.0
+
 Page {
     id: root
 
@@ -27,7 +29,10 @@ Page {
             displayMarginEnd: 40
             verticalLayoutDirection: ListView.BottomToTop
             spacing: 12
-            model: 10
+            model: ConversationModel {
+                recipient: inConversationWith
+            }
+
             delegate: Row {
                 readonly property bool sentByMe: index % 2 == 0
 
