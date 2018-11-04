@@ -29,7 +29,7 @@ ApplicationWindow {
                 width: parent.width
                 height: avatar.implicitHeight
                 leftPadding: avatar.implicitWidth + 32
-                onClicked: messageView.inConversationWith = model.display
+                onClicked: messageView.inConversationWith = model.name
                 Image {
                     id: avatar
                     source: "qrc:images/" + model.name.replace(" ", "_") + ".png"
