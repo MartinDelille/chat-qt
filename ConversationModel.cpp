@@ -3,6 +3,9 @@
 ConversationModel::ConversationModel(QObject *parent) : QAbstractListModel(parent)
 {
 	_messages.append({"Albert Einstein", "Me", QDateTime::fromString("2015-11-20T06:30:02", Qt::ISODate), "Coucou"});
+	_messages.append({"Me", "Albert Einstein", QDateTime::fromString("2015-11-20T06:30:12", Qt::ISODate), "Ca va?"});
+	_messages.append({"Ernest Hemingway", "Me", QDateTime::fromString("2015-11-20T06:30:02", Qt::ISODate), "Coucou"});
+	_messages.append({"Me", "Ernest Hemingway", QDateTime::fromString("2015-11-20T06:30:12", Qt::ISODate), "Ca va?"});
 }
 
 QString ConversationModel::recipient() const

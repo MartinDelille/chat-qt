@@ -22,6 +22,7 @@ Page {
         anchors.fill: parent
 
         ListView {
+            id: listView
             Layout.fillWidth: true
             Layout.fillHeight: true
             Layout.margins: pane.leftPadding + messageField.leftPadding
@@ -33,30 +34,44 @@ Page {
                 recipient: inConversationWith
             }
 
-            delegate: Row {
-                readonly property bool sentByMe: index % 2 == 0
-
+            delegate: Column {
                 anchors.right: sentByMe ? parent.right : undefined
                 spacing: 6
 
-                Rectangle {
-                    id: avatar
-                    width: height
-                    height: parent.height
-                    color: "grey"
-                    visible: !sentByMe
+                readonly property bool sentByMe: model.recipient !== "Me"
+
+                Row {
+                    id: messageRow
+                    spacing: 6
+                    anchors.right: sentByMe ? parent.right : undefined
+
+                    Image {
+                        id: avatar
+                        source: !sentByMe ? "qrc:/images/" + model.author.replace(" ", "_") + ".png" : ""
+                    }
+
+                    Rectangle {
+                        width: Math.min(messageText.implicitWidth + 24,
+                                        listView.width - (!sentByMe ? avatar.width + messageRow.spacing : 0))
+                        height: messageText.implicitHeight + 24
+                        color: sentByMe ? "lightgrey" : "steelblue"
+
+                        Label {
+                            id: messageText
+                            text: model.message
+                            color: sentByMe ? "black" : "white"
+                            anchors.fill: parent
+                            anchors.margins: 12
+                            wrapMode: Label.Wrap
+                        }
+                    }
                 }
 
-                Rectangle {
-                    width: 80
-                    height: 40
-                    color: sentByMe ? "lightgrey" : "steelblue"
-
-                    Label {
-                        anchors.centerIn: parent
-                        text: index
-                        color: sentByMe ? "black" : "white"
-                    }
+                Label {
+                    id: timestampText
+                    text: Qt.formatDateTime(model.timestamp, "d MMM hh:mm")
+                    color: "lightgrey"
+                    anchors.right: sentByMe ? parent.right : undefined
                 }
             }
 
