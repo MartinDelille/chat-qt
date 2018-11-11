@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>HomeForm.ui.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>images/Albert_Einstein.png</file>
         <file>images/Albert_Einstein@2x.png</file>
