@@ -5,5 +5,6 @@ install:
   - brew link qt
   - export PATH="/usr/local/opt/qt/bin:$PATH"
 script:
+  - qmllint *.qml
   - qmake chat-qt.pro
   - make
