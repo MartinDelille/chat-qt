@@ -2,7 +2,7 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.1
 
-import org.signal 1.0
+import ai.lipr.chat 1.0
 
 Page {
     id: root

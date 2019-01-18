@@ -3,14 +3,14 @@ import QtQuick.Layouts 1.3
 import QtQuick.Controls 1.4 as C1
 import QtQuick.Controls 2.4
 
-import org.signal 1.0
+import ai.lipr.chat 1.0
 
 ApplicationWindow {
     id: window
     visible: true
     width: 640
     height: 480
-    title: qsTr("Signal")
+    title: qsTr("Chat Qt")
 
     C1.SplitView {
         anchors.fill: parent

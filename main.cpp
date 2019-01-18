@@ -9,8 +9,8 @@ int main(int argc, char *argv[]) {
 
 	QGuiApplication app(argc, argv);
 
-	qmlRegisterType<ContactModel>("org.signal", 1, 0, "ContactModel");
-	qmlRegisterType<ConversationModel>("org.signal", 1, 0, "ConversationModel");
+	qmlRegisterType<ContactModel>("ai.lipr.chat", 1, 0, "ContactModel");
+	qmlRegisterType<ConversationModel>("ai.lipr.chat", 1, 0, "ConversationModel");
 
 	QQmlApplicationEngine engine;
 	engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

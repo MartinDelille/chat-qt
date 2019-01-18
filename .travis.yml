@@ -5,5 +5,5 @@ install:
   - brew link qt
   - export PATH="/usr/local/opt/qt/bin:$PATH"
 script:
-  - qmake signal-qt.pro
+  - qmake chat-qt.pro
   - make
