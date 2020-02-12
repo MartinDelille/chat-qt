@@ -4,7 +4,9 @@
 
 [![Build Status](https://travis-ci.org/MartinDelille/signal-qt.svg?branch=master)](https://travis-ci.org/MartinDelille/signal-qt)
 
-A Qt chat client:
+A Qt chat client
+
+![Chat](images/chat.jpg)
 
 ![Screenshot](screenshot.png)
 
