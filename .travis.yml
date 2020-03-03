@@ -1,10 +1,18 @@
 os: osx
 language: cpp
 install:
-  - brew install qt
-  - brew link qt
-  - export PATH="/usr/local/opt/qt/bin:$PATH"
+- brew install qt
+- brew link qt
+- export PATH="/usr/local/opt/qt/bin:$PATH"
 script:
-  - qmllint *.qml
-  - qmake chat-qt.pro
-  - make
+- qmllint *.qml
+- qmake chat-qt.pro
+- make
+deploy:
+  provider: releases
+  api_key:
+    secure: lOOlfBmozDY5edXAExPBjF/gVbIISGgIMoqyKGxrRW0/AzmVgZkLK9m5t+07+kk/4Vs3hpAhydQV+AEjH5iDI5VTl9JHH2pxYVbxOZ7cPOpBcWtLDnaHks9SVNUl+JtMfYCVwG+jzhtS30UZF92jIfpsr9Y0Jdfgbv7NmLrlK9lMh7/VbrzFLJK/b504WKcxp4RfRhNarND/RdIPPqWx79SeN7hpyiHUjwxu6Y8dvKVTxVSY5WY4WTmvAJ492ThvEGqf96cj3FjoGxZCWO8QgBvCcvwCPBIhLqrq7WUJ0ZdXgkvuUycxG+RGDOWXC/Q4L4SgnG5uy7jwyBsksISaRq5Sbs3rMLm/o9jyCO7YU8fHvKi8N1yvRA5DLGSKhm8LqSchnc9xi84Cr3KtuQN2rRYEh9JxsDHrY5fJ0NPpSasmlmlhhoYVqZRgNTutMbx2OF3HCZ1z9enRcxzJY3pZgKb8GLLTlQZ/KAQNbNWZiPIuGzl+NbETes/BanVnNbAOJ6VvOjgkyqWND2oz9llA5325u7oiFx2Y7L1zS2fOsiFpyKx1kZHkLpTrFnjLdRNL/ZrlCnrXyJZwPo3w6aEIYtHr/WbFjPChWRQV7uHxJC4qNiplHUhQloMcrG9dnfftlplgxPZpzedmQOVHLFeya1uZUoPMEaciwIn3OLmAu8Q=
+  file: chat-qt.dmg
+  on:
+    repo: MartinDelille/chat-qt
+    branch: push-release
