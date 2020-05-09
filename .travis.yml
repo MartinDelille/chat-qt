@@ -1,9 +1,11 @@
 os: osx
 language: cpp
 install:
-  - brew install qt
-  - brew link qt
-  - export PATH="/usr/local/opt/qt/bin:$PATH"
+  - pip install aqt
+  - export QT_VERSION="5.12.7"
+  - aqt install $QT_VERSION mac desktop
+  - export QT_PATH="$PWD/$QT_VERSION/clang_64"
+  - export PATH="$QT_PATH/qt/bin:$PATH"
 script:
   - qmllint *.qml
   - qmake chat-qt.pro
