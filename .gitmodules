@@ -1,0 +1,3 @@
+[submodule "vendors/create-dmg"]
+	path = vendors/create-dmg
+	url = https://github.com/andreyvit/create-dmg
