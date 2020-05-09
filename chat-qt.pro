@@ -40,7 +40,7 @@ DMG_NAME = $${TARGET}_v$${VERSION}
 
 # Target for pretty DMG generation
 dmg.commands += echo "Generate DMG";
-dmg.commands += create-dmg \
+dmg.commands += $$_PRO_FILE_PWD_/vendors/create-dmg/create-dmg \
 	--volname $$DMG_NAME \
 	--background dmg_bg.png \
 	--app-drop-link 450 218 \
