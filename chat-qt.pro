@@ -26,10 +26,27 @@ QML_IMPORT_PATH =
 QML_DESIGNER_IMPORT_PATH =
 
 # Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
+qnx: target.path = /tmp/$$TARGET/bin
+else: unix:!android: target.path = /opt/$$TARGET/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
     ContactModel.h \
     ConversationModel.h
+
+VERSION = $$system(git describe --abbrev=0 --tags)
+
+DMG_NAME = $${TARGET}_v$${VERSION}
+
+# Target for pretty DMG generation
+dmg.commands += echo "Generate DMG";
+dmg.commands += create-dmg \
+	--volname $$DMG_NAME \
+	--background dmg_bg.png \
+	--app-drop-link 450 218 \
+	--icon $$TARGET.app 150 218 \
+	--window-size 600 450 \
+	$$DMG_NAME.dmg \
+	$$TARGET.app
+
+QMAKE_EXTRA_TARGETS += dmg
