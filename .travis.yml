@@ -16,4 +16,5 @@ deploy:
   file: chat-qt_v*.dmg
   on:
     repo: MartinDelille/chat-qt
-    branch: push-release
+    tags: true
+    branch: master
