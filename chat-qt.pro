@@ -36,17 +36,26 @@ HEADERS += \
 
 VERSION = $$system(git describe --abbrev=0 --tags)
 
+BUNDLE_FILENAME = $${TARGET}.app
 DMG_NAME = $${TARGET}_v$${VERSION}
+DMG_FILENAME = $${DMG_NAME}.dmg
+
+preparation.commands += echo "Preparation";
+preparation.commands += rm -rf $$BUNDLE_FILENAME;
 
 # Target for pretty DMG generation
 dmg.commands += echo "Generate DMG";
+dmg.commands += macdeployqt $$BUNDLE_FILENAME &&
 dmg.commands += $$_PRO_FILE_PWD_/vendors/create-dmg/create-dmg \
-	--volname $$DMG_NAME \
-	--background dmg_bg.png \
-	--app-drop-link 450 218 \
-	--icon $$TARGET.app 150 218 \
-	--window-size 600 450 \
-	$$DMG_NAME.dmg \
-	$$TARGET.app
+        --volname $${DMG_NAME} \
+        --background $${PWD}/images/dmg_bg.png \
+        --icon $${BUNDLE_FILENAME} 150 218 \
+        --window-pos 200 120 \
+        --window-size 600 450 \
+        --icon-size 100 \
+        --hdiutil-quiet \
+        --app-drop-link 450 218 \
+        $${DMG_FILENAME} \
+        $${BUNDLE_FILENAME}
 
-QMAKE_EXTRA_TARGETS += dmg
+QMAKE_EXTRA_TARGETS += preparation dmg
