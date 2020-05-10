@@ -17,4 +17,3 @@ deploy:
   on:
     repo: MartinDelille/chat-qt
     tags: true
-    branch: master
